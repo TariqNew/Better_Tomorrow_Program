@@ -1,0 +1,1061 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+/* General Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    background: #f4f4f9;
+}
+
+/* Global Styles for Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+.first-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.top-section {
+    width: 100%;
+    height: 168px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.top-nav {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background: #005f5f; /* Darker background */
+}
+
+.top-nav .first-left {
+    display: flex;
+    width: 300px;
+    height: 100px;
+    align-items: center;
+}
+
+.first-left .logo {
+    width: 130px;
+    margin-left: 10px;
+}
+
+.first-left .logo img {
+    height: 60px;
+    width: 175px;
+    object-fit: cover;
+}
+
+.first-left .left p {
+    width: 165px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #d2d5d6;
+    margin-left: 55px;
+}
+
+/* Main Navigation */
+.top-section .nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(#005f5f, rgba(8, 70, 50, 0.8)), 
+                url('../images/web4.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Navigation Links */
+.top-section .nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0 80px;
+}
+
+.top-section .nav ul a {
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: #e3f2f1; /* Lighter, more readable color */
+    padding: 5px;
+    position: relative;
+    transition: color 0.6s ease;
+}
+
+.top-section .nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.6s ease;
+    transform: translateX(-50%);
+}
+
+.top-section .nav ul a:hover {
+    color: #ffffff;
+}
+
+.top-section .nav ul a:hover::after {
+    width: 100%;
+}
+
+/* Navigation Links for Mobile */
+@media (max-width: 768px) {
+    .top-section .nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #005f5f;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        z-index: 10;
+        margin: 0;
+    }
+
+    .top-section .nav ul.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        z-index: 20;
+    }
+
+    .top-nav .right ul {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-btn {
+        display: none;
+    }
+
+    .top-nav .right ul {
+        display: flex;
+    }
+}
+
+/* Style for the right section */
+.right {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    align-items: center;
+    width: auto;
+}
+
+/* Style for the list (social media icons and staff mail) */
+.right ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for individual list items */
+.right ul li {
+    margin: 0 10px; /* Space between items */
+}
+
+/* Style for the mail link */
+.right ul li a {
+    text-decoration: none; /* Removes underline */
+    color: #fff; /* White color for links */
+    font-weight: 600;
+    transition: color 0.3s ease; /* Smooth color transition */
+    font-size: 16px;
+}
+
+/* Hover effect for the mail link */
+.right ul li a:hover {
+    color: #83ccdc; /* Change color on hover */
+}
+
+/* Style for social media icons */
+.right ul li a i {
+    font-size: 20px; /* Size of social media icons */
+    color: #fff; /* Default icon color */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for the social media icons */
+.right ul li a:hover i {
+    color: #83ccdc; 
+}
+
+
+@media (max-width: 768px) {
+    .right ul {
+        display: none; 
+    }
+}
+
+/* Slider Section */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Navigation Arrows */
+.navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.navigation i {
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.navigation i:hover {
+    transform: scale(1.2);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    .top-nav .first-left {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .top-nav .right ul {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .top-section .nav ul {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-section .nav ul li {
+        margin: 5px 0;
+    }
+
+    .slider {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .first-left .left p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .top-nav .right ul {
+        display: none;
+    }
+
+    .top-section .nav ul a {
+        font-size: 14px;
+    }
+}
+
+
+
+
+.programs {
+    height: auto; /* Allow height to adjust based on content */
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.programs .head-program {
+    margin-bottom: 80px;
+    color: #005f5f;
+    text-align: center;
+}
+
+/* Flex container for program cards */
+.down-program {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    text-align: center;
+    flex-wrap: wrap; /* Added to make it responsive */
+    padding: 0 20px; /* Add some padding on sides */
+}
+
+/* Keyframes for rising animation */
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Program Card Styles */
+.down-program .program {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 230px;
+    height: 320px;
+    border: 1px solid #e9e8e8;
+    border-radius: 120px;
+    background: #e9e8e8;
+    color: #005f5f;
+    transition: transform 0.3s ease;
+    animation: riseUp 0.8s ease-out forwards; /* Apply the animation */
+    opacity: 0; /* Initial state is hidden */
+    animation-delay: 0.3s; /* Delay the start of the animation for each card */
+}
+
+.down-program .program:nth-child(1) {
+    animation-delay: 0.2s; /* First card starts earlier */
+}
+
+.down-program .program:nth-child(2) {
+    animation-delay: 0.4s; /* Second card starts a bit later */
+}
+
+.down-program .program:nth-child(3) {
+    animation-delay: 0.6s; /* Third card starts last */
+}
+
+.down-program .program:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+.down-program .program .img-box {
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.down-program .program h2 {
+    margin: 10px auto;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Large screens (desktops and tablets) */
+@media (min-width: 1024px) {
+    .down-program {
+        gap: 100px; /* More space between cards */
+    }
+
+    .down-program .program {
+        width: 230px;
+        height: 320px;
+    }
+}
+
+/* Medium screens (tablets in portrait mode and small laptops) */
+@media (max-width: 1023px) {
+    .down-program {
+        gap: 50px; /* Reduce gap */
+    }
+
+    .down-program .program {
+        width: 200px;
+        height: 280px; /* Adjust card sizes for medium screens */
+    }
+}
+
+/* Small screens (mobiles) */
+@media (max-width: 768px) {
+    .down-program {
+        gap: 30px; /* Smaller gap */
+        justify-content: center;
+    }
+
+    .down-program .program {
+        width: 500px; /* Reduce card width */
+        height: 300px; /* Reduce card height */
+        padding: 15px; /* Adjust padding */
+    }
+
+    .down-program .program h2 {
+        font-size: 16px; /* Smaller text size for headings */
+    }
+}
+
+/* Extra small screens (very small mobile screens) */
+@media (max-width: 480px) {
+    .down-program .program {
+        width: 200px; /* Make cards even smaller for small mobile devices */
+        height: 250px;
+        padding: 10px; /* Reduce padding for extra small screens */
+    }
+
+    .down-program .program h2 {
+        font-size: 14px; /* Adjust heading font size */
+    }
+
+    .down-program {
+        gap: 15px; /* Even smaller gap for tiny screens */
+    }
+}
+
+
+
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto; /* Allow height to adjust based on content */
+    margin: auto;
+    background: #fcf8f8;
+    padding: 30px;
+    position: relative;
+    top: 100px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 10px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.about-content {
+    flex: 2;
+    padding: 20px;
+}
+
+.about-content h2 {
+    color: #005f5f;
+}
+
+.about-services {
+    margin-top: 20px;
+}
+
+.about-body {
+    display: flex;
+    margin-bottom: 20px; /* Added spacing between the service items */
+}
+
+.about-body i {
+    font-size: 50px;
+    color: #4070a8;
+    margin-right: 15px; /* Space between the icon and text */
+}
+
+.about-body .service h3 {
+    color: #005f5f;
+    font-size: 18px; /* Adjusted font size for better readability */
+    margin-bottom: 10px;
+}
+
+.about-body .service p {
+    font-size: 14px; /* Adjusted font size */
+    line-height: 1.6;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Medium screens (tablets and smaller laptops) */
+@media (max-width: 1024px) {
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-image {
+        min-width: 100%;
+        margin-bottom: 20px; /* Add some space below the image */
+    }
+
+    .about-content {
+        flex: 1;
+        padding: 15px;
+    }
+
+    .about-body {
+        flex-direction: column; /* Stack icon and text vertically */
+    }
+
+    .about-body i {
+        font-size: 40px; /* Smaller icon size for medium screens */
+        margin-bottom: 10px; /* Space between icon and text */
+    }
+}
+
+/* Small screens (mobiles) */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 15px;
+        top: 50px; /* Adjust top margin for mobile */
+    }
+
+    .about-image {
+        min-width: 100%;
+        margin-bottom: 20px; /* Space below the image */
+    }
+
+    .about-content {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .about-body {
+        flex-direction: column;
+        margin-bottom: 15px; /* Space between services */
+    }
+
+    .about-body i {
+        font-size: 30px; /* Smaller icon size */
+        margin-bottom: 10px; /* Space between icon and text */
+    }
+
+    .about-body .service h3 {
+        font-size: 16px; /* Smaller heading text */
+    }
+
+    .about-body .service p {
+        font-size: 13px; /* Smaller paragraph text */
+    }
+}
+
+/* Extra small screens (very small mobile screens) */
+@media (max-width: 480px) {
+    .about-body {
+        margin-bottom: 10px;
+    }
+
+    .about-body i {
+        font-size: 25px; /* Even smaller icon size */
+        margin-right: 0; /* Remove space to the right */
+    }
+
+    .about-body .service h3 {
+        font-size: 14px; /* Smaller heading text */
+    }
+
+    .about-body .service p {
+        font-size: 12px; /* Smaller paragraph text */
+    }
+}
+
+
+/* General styles for the services section */
+.message-us {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 100px;
+}
+
+/* General styles for the sponsors section */
+.sponsors {
+    max-width: 1200px;
+    margin: 30px auto;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    top: 120px;
+}
+
+.head-sponsor h1 {
+    text-align: center;
+    color: #005f5f;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sponsor-section {
+    background: #005f5f;
+    border-radius: 10px;
+    padding: 40px 20px;
+    position: relative;
+    color: #83ccdc;
+    text-align: center;
+    font-style: italic;
+    width: 100%;
+}
+
+.sponsor-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.down-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sponsor-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.sponsor-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sponsor-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Media Queries for responsiveness */
+
+/* Medium screens (tablets and smaller laptops, max-width: 1024px) */
+@media (max-width: 1024px) {
+    .sponsors {
+        padding: 20px;
+    }
+
+    .head-sponsor h1 {
+        font-size: 24px; /* Adjust font size for medium screens */
+    }
+
+    .sponsor-section {
+        padding: 30px 15px;
+    }
+
+    .sponsor-section p {
+        font-size: 16px; /* Adjust paragraph font size */
+    }
+
+    .down-pic {
+        gap: 15px; /* Reduce gap between images */
+    }
+
+    .sponsor-circle {
+        width: 100px;
+        height: 100px; /* Adjust image size */
+    }
+}
+
+/* Small screens (mobiles, max-width: 768px) */
+@media (max-width: 768px) {
+    .sponsors {
+        width: 100%; /* Full width container for smaller screens */
+        padding: 20px 10px;
+    }
+
+    .head-sponsor h1 {
+        font-size: 22px; /* Smaller font size */
+    }
+
+    .sponsor-section {
+        padding: 25px 10px;
+    }
+
+    .sponsor-section p {
+        font-size: 14px; /* Smaller font for description */
+    }
+
+    .down-pic {
+        gap: 10px; /* Reduced gap between images */
+    }
+
+    .sponsor-circle {
+        width: 80px;
+        height: 80px; /* Smaller images for mobile screens */
+    }
+}
+
+/* Extra small screens (very small mobile devices, max-width: 480px) */
+@media (max-width: 480px) {
+    .sponsors {
+        width: 100%; /* Full width for very small screens */
+        padding: 15px 5px; /* Smaller padding */
+    }
+
+    .head-sponsor h1 {
+        font-size: 18px; /* Smaller font size for heading */
+    }
+
+    .sponsor-section {
+        padding: 20px 5px; /* Smaller padding */
+    }
+
+    .sponsor-section p {
+        font-size: 12px; /* Smaller font for description */
+    }
+
+    .down-pic {
+        gap: 10px;
+    }
+
+    .sponsor-circle {
+        width: 60px;
+        height: 60px; /* Even smaller images */
+    }
+}
+
+
+/* General styles for the services section */
+.services {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f8f8f8;
+    position: relative;
+    top: 100px;
+}
+
+/* Centering the header */
+.head-service h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #005f5f;
+    margin-bottom: 40px;
+}
+
+/* Container for the tutors, centered using flexbox */
+.down-service {
+    display: flex;
+    justify-content: center;  /* Center the items horizontally */
+    align-items: center;      /* Center the items vertically */
+    gap: 50px;                /* Spacing between the tutor cards */
+    flex-wrap: wrap;          /* Ensure it wraps on smaller screens */
+    margin-top: 20px;
+}
+
+/* Styles for each tutor card */
+.tutor {
+    height: 450px;
+    width: 250px;
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tutor:hover {
+    transform: translateY(-10px);  /* Add a hover effect */
+}
+
+.tutor .img-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tutor h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tutor p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Media Queries for responsiveness */
+
+/* Medium screens (tablets and smaller laptops, max-width: 1024px) */
+@media (max-width: 1024px) {
+    .down-service {
+        gap: 30px; /* Reduced gap on medium screens */
+    }
+
+    .tutor {
+        width: 220px; /* Slightly smaller tutor cards */
+    }
+}
+
+/* Small screens (mobiles, max-width: 768px) */
+@media (max-width: 768px) {
+    .down-service {
+        gap: 20px;  /* Reduced gap */
+        flex-direction: column; /* Stack the cards vertically */
+    }
+
+    .tutor {
+        width: 100%; /* Full width for small screens */
+        margin-bottom: 20px; /* Add space between stacked cards */
+    }
+}
+
+/* Extra small screens (very small mobile devices, max-width: 480px) */
+@media (max-width: 480px) {
+    .down-service {
+        gap: 10px; /* Even smaller gap */
+    }
+
+    .tutor {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .tutor h2 {
+        font-size: 18px;  /* Adjust font size for smaller screens */
+    }
+
+    .tutor p {
+        font-size: 14px;  /* Adjust font size for smaller screens */
+    }
+}
+
+
+.message-us {
+    padding: 40px;
+    width: 400px;
+    position: relative;
+    top: 200px;
+}
+
+.message-form {
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.form-field input, .form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-field input[type="submit"] {
+    background: #005f5f;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.form-field input[type="submit"]:hover {
+    background: #ffcc00; /* Yellow hover effect */
+}
+
+.footer {
+    background: #f8f5f2;
+    padding: 40px 20px;
+    color: #333;
+    position: relative;
+    top: 200px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h2,
+.footer-section h3 {
+    color: #222;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 16px;
+    color: #555;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #005f5f;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background: #005f5f;
+    color: #fff;
+}
+
+.newsletter form {
+    display: flex;
+    border: 1px solid #005f5f;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.newsletter button {
+    background: #005f5f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 0 30px 30px 0;
+}
+
+.newsletter button:hover {
+    background: #005f5f;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: #005f5f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.scroll-top:hover {
+    background: #005f5f;
+}
